@@ -20,8 +20,8 @@ def get_db():
 
 class Product(BaseModel):
     code: int
-    name: str
-    category: str
+    name: str | None = None
+    category: str | None = None
     count: int
     branch: str
 
@@ -49,4 +49,18 @@ def get_db():
 async def supply_request(list_product: ListProduct, db: Session = Depends(get_db)):
 
     for product in list_product.list_product:
-        return crud.product_request(db, product)
+        _product, has_stock = crud.product_request(db, product)
+        if _product == None:
+            return Response(status="Error",
+                            code="404",
+                            message="Product not found").dict(exclude_none=True)
+
+        elif has_stock:
+            message = "Quedan " + \
+                str(_product.available_quantity) + " unidades en stock."
+        else:
+            message = "No hay suficientes "+_product.name_product
+
+        return Response(status="OK",
+                        code="200",
+                        message=message).dict(exclude_none=True)

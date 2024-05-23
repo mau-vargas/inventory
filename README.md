@@ -1,30 +1,51 @@
-# rabbit_project_python_example
-Proyecto de ejemplo para utilizar Rabbit con python
-
-#-- Para levantar el yml ejecutar:
-#docker-compose up
-
-#-- Para abrir la ui de rabbit
-#http://localhost:15672/
-
-#-- dependencias a instalar
-#Pika
-#pip3 install pika
+# Inventario
+Proyecto para administrar un inventario
 
 
-pip install fastapi
-
-#openpyxl
-#pip3 install openpyxl
-
-#psycopg2
-#pip install psycopg2-binary
-
-flask
-pip3 install flask
 
 
-#-- Docker
+## Herramientas utilizadas:
+<table style="border-collapse: collapse; background-color: transparent;">
+  <tr>
+    <td><img src="https://github.com/mau-vargas/inventory/blob/main/image/Python.png" alt="Logo de Python" width="50"/></td>
+    <td><img src="https://github.com/mau-vargas/inventory/blob/main/image/FastAPI.png" alt="Logo de FastAPI" width="50"/></td>
+    <td><img src="https://github.com/mau-vargas/inventory/blob/main/image/RabbitMQ.png" alt="Logo de RabbitMQ" width="50"/></td>
+    <td><img src="https://github.com/mau-vargas/inventory/blob/main/image/postgreSQL.png" alt="Logo de PostgreSQL" width="50"/></td>
+    <td><img src="https://github.com/mau-vargas/inventory/blob/main/image/dbschema.jpeg" alt="Logo de DbSchema" width="50"/></td>
+    <td><img src="https://github.com/mau-vargas/inventory/blob/main/image/docker.png" alt="Logo de Docker" width="50"/></td>
+  </tr>
+</table>
+
+- Python : **3.11.3** 
+- FastApi : https://fastapi.tiangolo.com/
+- RabbitMQ : https://www.rabbitmq.com/
+- PostgreSQL : https://www.postgresql.org/
+- DBSchema : https://dbschema.com/index_es.html
+- Docker : https://www.docker.com/
+
+# Inicar el proyecto
+
+## FastApi
+fastapi dev app/main.py
+
+## Iniciar docker:
+- docker-compose up
+- Se levantará RabbitMQ y PostgreSQL.
+
+## Para abrir la ui de rabbit
+- http://localhost:15672/
+
+## PostgreSQL
+- http://localhost:5432
+
+## DbSchema
+- HOST=http://localhost:5432
+- POSTGRES_PASSWORD=admin_password
+- POSTGRES_USER=admin_user
+- POSTGRES_DB=inventory_db
+
+
+## Docker
 #listar docker
 #docker ps 
 
@@ -36,17 +57,4 @@ pip3 install flask
 #\dt
 
 #listado de productos
-SELECT * FROM nombre_de_tabla;
-
-
-
-#ejemplo api python 
-#https://dev.to/davey/an-application-structure-for-python-rest-apis-km2
-
-
-#Manejar fastApi como microservicio
-https://github.com/jaisenbe58r/iaapi
-
-
-
-(base) ➜  Proyecto_2 pip3 import sqlalchemy
+SELECT * FROM inventory;

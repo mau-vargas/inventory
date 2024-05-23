@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
-from app.inventory.db.model import Product
-from app.inventory.db.schemas import ProductSchema
-from app.inventory.db.schemas import Request, Response, RequestBook
-from app.mq_supply import producer_supply
-from app.mq_dispatcher import producer_dispacher
+from db.model import Product
+from db.schemas import ProductSchema
+from db.schemas import Request, Response
+from mq_supply import producer_supply
+from mq_dispatcher import producer_dispacher
 
 
 def get_product_by_code(db: Session, code: int):
@@ -26,7 +26,7 @@ def product_request(db: Session, product: ProductSchema):
     else:
         _product.available_quantity = _product.available_quantity - product.count
         producer_dispacher.send_order(
-            _product.available_quantity, product.code, product.branch)
+            product.count, product.code, product.branch)
         db.commit()
         db.refresh(_product)
         has_stock = True

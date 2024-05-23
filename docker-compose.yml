@@ -11,7 +11,7 @@ services:
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
     command: sh -c "chmod 600 /var/lib/rabbitmq/.erlang.cookie && rabbitmq-server"
     networks:
-      - rabbitmq_go_net
+      - app-network
 
   postgres:
     image: postgres:14-alpine
@@ -20,16 +20,47 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      #- ./inventory/app/postgresql.conf:/etc/postgresql/postgresql.conf
 
     environment:
       - POSTGRES_PASSWORD=admin_password
       - POSTGRES_USER=admin_user
       - POSTGRES_DB=inventory_db
+      - POSTGRES_HOST=postgres
+    #command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    networks:
+      - app-network
+
+  fastapi:
+    build: ./app
+    container_name: 'fastapi'
+    depends_on:
+      - postgres
+      - rabbitmq
+    environment:
+      - DATABASE_URL=postgresql://admin_user:admin_password@postgres:5432/inventory_db
+      #- RABBITMQ_URL=amqp://guest:guest@rabbitmq
+    command:
+      [
+        "uvicorn",
+        "main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000"
+      ]
+
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/Users/mauriciovargas/Desktop/Projects/Python/Proyecto_2/inventory:/app/main.py
+    networks:
+      - app-network
 
 networks:
-  rabbitmq_go_net:
+  app-network:
     driver: bridge
 
 volumes:
   postgres:
-    driver: local
+    driver: bridge

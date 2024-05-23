@@ -1,9 +1,8 @@
 from fastapi import FastAPI
 from router.supply_request_router import router as api_router
-import app.inventory.db.model as model
-from app.inventory.db.config import engine
-from app.mq_supply import consumer_supply
-
+from db import model
+from db.config import engine
+from mq_supply import consumer_supply
 
 model.Base.metadata.create_all(bind=engine)
 

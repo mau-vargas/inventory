@@ -1,0 +1,8 @@
+fastapi
+pika
+openpyxl
+psycopg2-binary
+flask
+sqlalchemy
+colorama
+pydantic

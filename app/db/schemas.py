@@ -5,15 +5,6 @@ from pydantic.generics import GenericModel
 T = TypeVar('T')
 
 
-class BookSchema(BaseModel):
-    id: Optional[int] = None
-    title: Optional[str] = None
-    description: Optional[str] = None
-
-    class Config:
-        orm_mode = True
-
-
 class ProductSchema(BaseModel):
     code: str
     count: int
@@ -25,10 +16,6 @@ class ProductSchema(BaseModel):
 
 class Request(GenericModel, Generic[T]):
     parameter: Optional[T] = Field(...)
-
-
-class RequestBook(BaseModel):
-    parameter: BookSchema = Field(...)
 
 
 class Response(GenericModel, Generic[T]):

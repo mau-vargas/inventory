@@ -16,11 +16,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
- # Ajustar según la estructura de tu repo
-  destination:
-    namespace: testing
-    server: 'https://kubernetes.default.svc'
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true

@@ -58,3 +58,50 @@ fastapi dev app/main.py
 
 #listado de productos
 SELECT * FROM inventory;
+
+
+## How to update the image?
+
+```bash
+docker login
+
+docker build src/ -t kanata333/fastapi-example:v<version tag>
+
+docker push kanata333/fastapi-example:v<version tag>
+```
+
+
+Levantar minikube:
+minikube start
+
+minikube dashboard
+
+
+Instalar Argo: 
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+Exponer argoserver
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+
+Obtener contraseña del usuario admin
+kubectl -n argocd get pods -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2
+
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
+
+
+Resultado: iJKpoS4aJOhAj6hC
+
+
+crear la imagen
+docker login
+
+docker build src/ -t inventory-fastapi
+
+docker push kanata333/fastapi-example:v<version tag>
+
+
+docker push inventory-fastapi

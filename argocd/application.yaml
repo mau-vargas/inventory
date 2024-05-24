@@ -11,14 +11,14 @@ spec:
     path: k8s/inventory/ 
   destination:
     server: https://kubernetes.default.svc
-    namespace: inventory
+    namespace: testing
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
  # Ajustar según la estructura de tu repo
   destination:
-    namespace: inventory
+    namespace: testing
     server: 'https://kubernetes.default.svc'
   syncPolicy:
     automated:

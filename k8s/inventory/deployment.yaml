@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: inventory
-        image: localhost:5000/inventory-fastapi
+        image: inventory-fastapi
         ports:
         - containerPort: 80

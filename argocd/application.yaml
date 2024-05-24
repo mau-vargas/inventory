@@ -3,13 +3,13 @@ kind: Application
 metadata:
   name: inventory
   namespace: testing
-  
+
 spec:
   project: inventory
   source:
     repoURL: 'https://github.com/mau-vargas/inventory.git'
     targetRevision: main
-    path: ./k8s/inventory/
+    path: ../k8s/inventory/
 
   destination:
     server: https://kubernetes.default.svc

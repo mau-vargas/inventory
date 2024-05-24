@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: inventory
+  name: testing
   namespace: argocd
 spec:
   description: Proyecto de inventario de Mau Vargas

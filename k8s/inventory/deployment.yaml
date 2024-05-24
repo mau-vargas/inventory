@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: inventory
-  labels:
-    app: inventory
+  name: inventory-fastapi
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: inventory
+      app: inventory-fastapi
   template:
     metadata:
       labels:
-        app: inventory
+        app: inventory-fastapi
     spec:
       containers:
-        - name: inventory
-          image: inventory-fastapi:latest
+      - name: inventory-fastapi
+        image: inventory-fastapi:latest
+        ports:
+        - containerPort: 80

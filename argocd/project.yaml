@@ -1,29 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: api-app
+  name: inventory
   namespace: argocd
 spec:
-  description: api-app
-
+  description: Proyecto de inventario de Mau Vargas
   sourceRepos:
-    - "*"
-
+    - '*'
   destinations:
-    - namespace: api-app
-      server: https://kubernetes.default.svc
-
+    - namespace: '*'
+      server: 'https://kubernetes.default.svc'
   clusterResourceWhitelist:
-    - group: "*"
-      kind: "*"
-
+    - group: '*'
+      kind: '*'
   namespaceResourceBlacklist:
-    - group: ""
-      kind: ResourceQuota
-    - group: ""
-      kind: LimitRange
-    - group: ""
-      kind: NetworkPolicy
-
-  orphanedResources:
-    warn: false
+    - group: '*'
+      kind: 'ResourceQuota'

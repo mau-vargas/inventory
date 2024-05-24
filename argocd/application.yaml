@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: 'https://github.com/mau-vargas/inventory.git'
     targetRevision: main
-    path: k8s/inventory/
+    path: k8s/inventory/k8s/inventory/deployment.yaml
 
   destination:
     server: https://kubernetes.default.svc

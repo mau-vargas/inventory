@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: inventory
-        image: inventory-fastapi:latest
+        image: dhruvin30/dhsoniweb
         ports:
         - containerPort: 80

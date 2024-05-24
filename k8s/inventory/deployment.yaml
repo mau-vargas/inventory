@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: inventory
-        image: mauvargas/inventory-fastapi
+        image: mauvargas/inventory-fastapi:latest
         ports:
         - containerPort: 80

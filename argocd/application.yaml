@@ -3,8 +3,7 @@ kind: Application
 metadata:
   name: inventory
   namespace: testing
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io  
+  
 spec:
   project: inventory
   source:

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: argocd-tls-certs-cm
-  namespace: argocd
+  namespace: testing
 data:
   github.com.crt: |
     -----BEGIN CERTIFICATE-----

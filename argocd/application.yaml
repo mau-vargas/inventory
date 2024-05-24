@@ -5,7 +5,7 @@ metadata:
   namespace: testing
 
 spec:
-  project: inventory
+  project: testing
   source:
     repoURL: 'https://github.com/mau-vargas/inventory.git'
     targetRevision: main

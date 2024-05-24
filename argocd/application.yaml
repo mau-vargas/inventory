@@ -3,15 +3,19 @@ kind: Application
 metadata:
   name: inventory
   namespace: testing
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io  
 spec:
   project: inventory
   source:
     repoURL: 'https://github.com/mau-vargas/inventory.git'
-    targetRevision: HEAD
+    targetRevision: main
     path: k8s/inventory/
+
   destination:
     server: https://kubernetes.default.svc
     namespace: testing
+
   syncPolicy:
     automated:
       prune: true

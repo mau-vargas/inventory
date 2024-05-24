@@ -13,7 +13,7 @@ spec:
         app: inventory-fastapi
     spec:
       containers:
-      - name: inventory-fastapi
-        image: inventory-fastapi:latest
+      - name: inventory
+        image: inventory-fastapi
         ports:
         - containerPort: 80

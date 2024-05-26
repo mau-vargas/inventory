@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres-deployment
+  namespace: testing
 spec:
   replicas: 1
   selector:
@@ -28,5 +29,5 @@ spec:
         emptyDir: {}
       - name: init-sql
         hostPath:
-          path: /Users/mauriciovargas/Desktop/Projects/Python/Proyecto_2/inventory/init.sql  # Reemplazar con la ruta absoluta del archivo init.sql en el host
+          path: init.sql  # Reemplazar con la ruta absoluta del archivo init.sql en el host
           type: File

@@ -17,7 +17,7 @@ spec:
         image: mauvargas/inventory-fastapi:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8000
+        - containerPort: 80
         volumeMounts:
         - name: fastapi-code
           mountPath: /app/main.py

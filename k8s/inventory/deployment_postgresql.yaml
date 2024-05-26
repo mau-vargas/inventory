@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -23,9 +22,11 @@ spec:
           mountPath: /var/lib/postgresql/data
         - name: init-sql
           mountPath: /docker-entrypoint-initdb.d/init.sql
+          subPath: init.sql
       volumes:
       - name: postgres-data
         emptyDir: {}
       - name: init-sql
         hostPath:
-          path: ./init.sql  # Reemplazar con la ruta del archivo init.sql en el host
+          path: /Users/mauriciovargas/Desktop/Projects/Python/Proyecto_2/inventory/init.sql  # Reemplazar con la ruta absoluta del archivo init.sql en el host
+          type: File

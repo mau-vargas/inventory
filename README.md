@@ -66,6 +66,7 @@ SELECT * FROM inventory;
 docker login
 
 docker build src/ -t kanata333/fastapi-example:v<version tag>
+docker buildx build -t inventory-fastapi:0.0.1 . #funciona
 
 docker push kanata333/fastapi-example:v<version tag>
 ```

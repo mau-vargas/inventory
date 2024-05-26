@@ -18,3 +18,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: fastapi-code
+          mountPath: /app/main.py
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://admin_user:admin_password@postgres:5432/inventory_db"

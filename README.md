@@ -105,3 +105,9 @@ docker push kanata333/fastapi-example:v<version tag>
 
 
 docker push inventory-fastapi
+
+---------------------
+restablecer el codigo
+
+git fetch origin                
+git reset --hard origin/main

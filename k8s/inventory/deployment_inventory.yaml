@@ -24,6 +24,4 @@ spec:
           volumeMounts:
             - mountPath: /app/main.py
               name: fastapi-code
-          env:
-            - name: DATABASE_URL
-              value: "postgresql://admin_user:admin_password@postgres:5432/inventory_db"
+        

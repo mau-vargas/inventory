@@ -21,7 +21,5 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-          volumeMounts:
-            - mountPath: /app/main.py
-              name: fastapi-code
+
         

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: inventory-fastapi
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: inventory-fastapi
@@ -18,13 +18,3 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: fastapi-code
-          mountPath: /app/main.py
-        env:
-        - name: DATABASE_URL
-          value: "postgresql://admin_user:admin_password@postgres:5432/inventory_db"
-      volumes:
-      - name: fastapi-code
-        hostPath:
-          path: /Users/mauriciovargas/Desktop/Projects/Python/Proyecto_2/inventory

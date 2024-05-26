@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-posgresql
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: inventory-postgresql
+  template:
+    metadata:
+      labels:
+        app: inventory-postgresql
+    spec:
+      containers:
+      - name: inventory
+        image: mauvargas/inventory-fastapi:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

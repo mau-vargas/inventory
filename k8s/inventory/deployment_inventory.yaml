@@ -1,7 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    argocd.argoproj.io/instance: inventory
   name: inventory-fastapi
+  namespace: testing
 spec:
   replicas: 1
   selector:
@@ -13,14 +16,14 @@ spec:
         app: inventory-fastapi
     spec:
       containers:
-      - name: inventory
-        image: mauvargas/inventory-fastapi:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: fastapi-code
-          mountPath: /app/main.py
-        env:
-        - name: DATABASE_URL
-          value: "postgresql://admin_user:admin_password@postgres:5432/inventory_db"
+        - name: inventory
+          image: 'mauvargas/inventory-fastapi:latest'
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /app/main.py
+              name: fastapi-code
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://admin_user:admin_password@postgres:5432/inventory_db"

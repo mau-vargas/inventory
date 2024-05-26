@@ -26,3 +26,6 @@ spec:
       volumes:
       - name: postgres-data
         emptyDir: {}
+      - name: init-sql
+        hostPath:
+          path: ./init.sql  # Reemplazar con la ruta del archivo init.sql en el host

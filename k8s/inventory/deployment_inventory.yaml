@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: inventory
-          image: 'mauvargas/inventory-fastapi:latest'
+          image: 'mauvargas/inventory-fastapi:0.1'
           imagePullPolicy: Always
           ports:
             - containerPort: 80

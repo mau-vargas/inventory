@@ -20,14 +20,13 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      #- ./inventory/app/postgresql.conf:/etc/postgresql/postgresql.conf
 
     environment:
       - POSTGRES_PASSWORD=admin_password
       - POSTGRES_USER=admin_user
       - POSTGRES_DB=inventory_db
       - POSTGRES_HOST=postgres
-    #command: postgres -c config_file=/etc/postgresql/postgresql.conf
+
     networks:
       - app-network
 

@@ -1,20 +1,28 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: inventory-posgresql
+  name: postgres-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: inventory-postgresql
+      app: postgres
   template:
     metadata:
       labels:
-        app: inventory-postgresql
+        app: postgres
     spec:
       containers:
-      - name: inventory
-        image: mauvargas/inventory-fastapi:latest
-        imagePullPolicy: Always
+      - name: postgres
+        image: postgres:14-alpine
         ports:
-        - containerPort: 80
+        - containerPort: 5432
+        volumeMounts:
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+        - name: init-sql
+          mountPath: /docker-entrypoint-initdb.d/init.sql
+      volumes:
+      - name: postgres-data
+        emptyDir: {}

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: mycontainer
+    image: busybox
+    command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+    volumeMounts:
+    - name: workdir
+      mountPath: /mnt/data
+  initContainers:
+  - name: init-myservice
+    image: busybox
+    command: ['sh', '-c', 'until [ -f /mnt/data/init.sql ]; do echo "Esperando a que se cree el archivo init.sql" && sleep 1; done;']
+    volumeMounts:
+    - name: workdir
+      mountPath: /mnt/data
+  volumes:
+  - name: workdir
+    emptyDir: {}

@@ -29,6 +29,6 @@ spec:
         emptyDir: {}
       - name: init-sql
         hostPath:
-          path: /Users/mauriciovargas/Desktop/Projects/Python/Proyecto_2/inventory/init.sql  # Reemplazar con la ruta absoluta del archivo init.sql en el host
+          path: /mnt/data/init.sql
           type: File
 

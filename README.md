@@ -105,9 +105,24 @@ docker build src/ -t inventory-fastapi
 docker push kanata333/fastapi-example:v<version tag>
 
 
+
+
 docker push inventory-fastapi
 
+
+
+
 ---------------------
+
+
+construir la image 
+docker build -t inventory-fastapi:0.1 .
+
+docker tag inventory-fastapi:0.1 mauvargas/inventory-fastapi:0.1
+
+docker push mauvargas/inventory-fastapi:0.1
+
+
 restablecer el codigo
 
 git fetch origin                

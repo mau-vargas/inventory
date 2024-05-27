@@ -14,7 +14,7 @@ spec:
         app: postgres
     spec:
       containers:
-      - name: testing
+      - name: postgres
         image: postgres:14-alpine
         ports:
         - containerPort: 5432
@@ -31,5 +31,4 @@ spec:
         hostPath:
           path: init.sql  # Reemplazar con la ruta absoluta del archivo init.sql en el host
           type: File
-
 

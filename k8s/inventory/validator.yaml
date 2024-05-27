@@ -9,7 +9,7 @@ spec:
     command: ['sh', '-c', 'ls -l /mnt/data/ && sleep 3600']
     volumeMounts:
     - name: workdir
-      mountPath: /mnt/data
+      mountPath: /mnt/data/
   volumes:
   - name: workdir
     emptyDir: {}

@@ -6,7 +6,7 @@ spec:
   containers:
   - name: mycontainer
     image: busybox
-    command: ['sh', '-c', 'ls -l  && sleep 3600']
+    command: ['sh', '-c', 'ls -l /mnt/data/ && sleep 3600']
     volumeMounts:
     - name: workdir
       mountPath: /mnt/data

@@ -6,17 +6,17 @@ spec:
   containers:
   - name: mycontainer
     image: busybox
-    command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+    command: ['sh', '-c', 'ls -la /mnt/data && until [ -f /mnt/data/init.sql ]; do echo "Esperando a que se cree el archivo init.sql" && sleep 1 && ls -la /mnt/data; done;']
     volumeMounts:
     - name: workdir
-      mountPath: mnt/data
+      mountPath: /mnt/data
   initContainers:
   - name: init-myservice
     image: busybox
-    command: ['sh', '-c', 'until [ -f mnt/data/init.sql ]; do echo "Esperando a que se cree el archivo init.sql" && sleep 1; done;']
+    command: ['sh', '-c', 'until [ -f /mnt/data/init.sql ]; do echo "Esperando a que se cree el archivo init.sql" && sleep 1; done;']
     volumeMounts:
     - name: workdir
-      mountPath: mnt/data
+      mountPath: /mnt/data
   volumes:
   - name: workdir
     emptyDir: {}

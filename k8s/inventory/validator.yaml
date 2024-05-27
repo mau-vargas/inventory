@@ -6,14 +6,7 @@ spec:
   containers:
   - name: mycontainer
     image: busybox
-    command: ['sh', '-c', 'for dir in /mnt/data/*/; do echo "$dir"; done']
-    volumeMounts:
-    - name: workdir
-      mountPath: /mnt/data
-  initContainers:
-  - name: init-myservice
-    image: busybox
-    command: ['sh', '-c', 'until [ -f /mnt/data/init.sql ]; do echo "Esperando a que se cree el archivo init.sql" && sleep 1; done;']
+    command: ['sh', '-c', 'ls -l /mnt/data && sleep 3600']
     volumeMounts:
     - name: workdir
       mountPath: /mnt/data

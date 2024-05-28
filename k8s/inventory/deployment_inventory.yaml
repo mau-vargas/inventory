@@ -21,5 +21,20 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-
-        
+          env:
+            - name: POSTGRES_HOST
+              value: postgres-service.testing.svc.cluster.local
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: inventory_db
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgres-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgres-password

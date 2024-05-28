@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Service
 metadata:
-  name: postgres-deployment
+  name: postgres-service
   namespace: testing
 spec:
   replicas: 1

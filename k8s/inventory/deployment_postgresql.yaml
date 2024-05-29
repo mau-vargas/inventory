@@ -47,3 +47,6 @@ spec:
       - name: init-script
         configMap:
           name: postgres-init-script
+          items:
+          - key: init.sql
+            path: init.sql

@@ -12,7 +12,7 @@ data:
       END IF;
     END
     $$;
-    CREATE DATABASE IF NOT EXISTS inventory_db WITH OWNER admin_user;
+    CREATE DATABASE inventory_db WITH OWNER admin_user;
     CREATE TABLE IF NOT EXISTS inventory (
       product_id SERIAL PRIMARY KEY,
       code INT,

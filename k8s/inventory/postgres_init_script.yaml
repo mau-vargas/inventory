@@ -5,7 +5,13 @@ metadata:
   namespace: testing
 data:
   init.sql: |
-    CREATE ROLE IF NOT EXISTS admin_user WITH LOGIN PASSWORD 'admin_password';
+    DO $$
+    BEGIN
+      IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'admin_user') THEN
+        CREATE ROLE admin_user WITH LOGIN PASSWORD 'admin_password';
+      END IF;
+    END
+    $$;
     CREATE DATABASE IF NOT EXISTS inventory_db WITH OWNER admin_user;
     CREATE TABLE IF NOT EXISTS inventory (
       product_id SERIAL PRIMARY KEY,

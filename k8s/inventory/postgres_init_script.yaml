@@ -3,9 +3,10 @@ kind: ConfigMap
 metadata:
   name: postgres-init-script
   namespace: testing
+  #CREATE ROLE admin_user WITH LOGIN PASSWORD 'admin_password';
 data:
-    #CREATE DATABASE inventory_db WITH OWNER admin_user;
   init.sql: |
+    CREATE DATABASE inventory_db WITH OWNER admin_user;
     CREATE TABLE inventory (
       product_id SERIAL PRIMARY KEY,
       code INT,

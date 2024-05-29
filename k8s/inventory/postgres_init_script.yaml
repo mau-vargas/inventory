@@ -5,6 +5,7 @@ metadata:
   namespace: testing
 data:
   init.sql: |
+    CREATE ROLE admin_user WITH LOGIN PASSWORD 'admin_password';
     CREATE DATABASE inventory_db WITH OWNER admin_user;
     CREATE TABLE inventory (
       product_id SERIAL PRIMARY KEY,

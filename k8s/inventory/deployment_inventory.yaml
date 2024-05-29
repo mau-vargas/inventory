@@ -29,6 +29,6 @@ spec:
             - name: POSTGRES_DB
               value: inventory_db
             - name: POSTGRES_USER
-              value: admin_user
+              value: "admin_user"
             - name: POSTGRES_PASSWORD
-              value: admin_password
+              value: "admin_password"

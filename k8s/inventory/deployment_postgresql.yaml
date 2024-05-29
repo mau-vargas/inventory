@@ -46,7 +46,7 @@ spec:
       volumes:
       - name: init-script
         configMap:
-          name: script/postgres-init-script
+          name: postgres-init-script
           items:
           - key: init.sql
             path: init.sql

@@ -127,3 +127,7 @@ restablecer el codigo
 
 git fetch origin                
 git reset --hard origin/main
+
+--------
+obtener ip del namespace para conectarse desde el postman
+kubectl get svc -n testing  

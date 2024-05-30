@@ -20,7 +20,9 @@ jobs:
       with:
         username: "ing.mauvargas@gmail.com"
         password: "maufunk1"   
-    # - name: Build the Docker image
-    #   run: |
-    #     cd app/
-    #     docker build -t your-dockerhub-username/your-image-name:your-tag .
+    - name: Build the Docker image
+      run: |
+        cd app/
+        docker build -t inventory-fastapi:0.3 .
+        docker tag inventory-fastapi:0.3 mauvargas/inventory-fastapi:0.3
+        docker push mauvargas/inventory-fastapi:0.3

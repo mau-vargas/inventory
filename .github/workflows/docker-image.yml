@@ -20,7 +20,7 @@ jobs:
       with:
         username: "ing.mauvargas@gmail.com"
         password: "maufunk1"   
-    - name: Build the Docker image
-      run: |
-        cd app/
-        docker build -t your-dockerhub-username/your-image-name:your-tag .
+    # - name: Build the Docker image
+    #   run: |
+    #     cd app/
+    #     docker build -t your-dockerhub-username/your-image-name:your-tag .

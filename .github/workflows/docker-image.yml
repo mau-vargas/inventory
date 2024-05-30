@@ -1,28 +1,37 @@
-name: Docker Image CI
+name: Build Docker Image
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - '*'
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-   
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
-        username: "ing.mauvargas@gmail.com"
-        password: "maufunk1"   
-    - name: Build the Docker image
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Extract tag name
+      id: extract_tag
+      run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+    - name: Push Docker image
       run: |
-        cd app/
-        docker build -t inventory-fastapi:0.3 .
-        docker tag inventory-fastapi:0.3 mauvargas/inventory-fastapi:0.3
-        docker push mauvargas/inventory-fastapi:0.3
+       cd app/
+       docker build -t inventory-fastapi:${{ env.TAG }} .
+       docker tag inventory-fastapi:${{ env.TAG }} mauvargas/inventory-fastapi:${{ env.TAG }}
+       docker push mauvargas/inventory-fastapi:${{ env.TAG }}
+        
+       
+        

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    argocd.argoproj.io/instance: inventory-fastapi
+    argocd.argoproj.io/instance: inventory
   name: inventory-fastapi
   namespace: testing
 spec:

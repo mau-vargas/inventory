@@ -5,7 +5,7 @@ metadata:
   namespace: testing
 spec:
   selector:
-    app: inventory
+    app: inventory-fastapi
   ports:
     - protocol: TCP
       port: 80

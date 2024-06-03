@@ -8,6 +8,6 @@ spec:
     app: inventory-fastapi
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 3000
+      port: 8000
+      targetPort: 8000
   type: ClusterIP

@@ -7,11 +7,9 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-    - host: v1.inventory.service
       http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: /v1/*
             backend:
               service:
                 name: inventory-service

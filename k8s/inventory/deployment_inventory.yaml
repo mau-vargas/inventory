@@ -20,7 +20,7 @@ spec:
           image: 'mauvargas/inventory-fastapi:0.2'
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 3000
           env:
             - name: POSTGRES_HOST
               value: postgres-service.testing.svc.cluster.local

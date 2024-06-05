@@ -30,6 +30,11 @@ class ListProduct(BaseModel):
     list_product: List[Product]
 
 
+@router.get("/prueba")
+async def prueba():
+    return {"message": "Hello World"}
+
+
 @router.get("/test/test")
 async def supply_request(list_product: ListProduct):
     for product in list_product:

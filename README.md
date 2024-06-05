@@ -25,12 +25,14 @@ Proyecto para administrar un inventario
 
 # Inicar el proyecto
 
-## FastApi
-fastapi dev app/main.py
+
 
 ## Iniciar docker:
 - docker-compose up
 - Se levantará RabbitMQ y PostgreSQL.
+
+## FastApi
+fastapi dev app/main.py
 
 ## Para abrir la ui de rabbit
 - http://localhost:15672/
@@ -131,3 +133,9 @@ git reset --hard origin/main
 --------
 obtener ip del namespace para conectarse desde el postman
 kubectl get svc -n testing  
+
+
+
+--------
+levantar inventory-service para acceder a peticiones
+kubectl port-forward svc/inventory-service 8080:8000 -n testing

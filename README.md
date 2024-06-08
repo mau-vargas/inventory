@@ -139,3 +139,11 @@ kubectl get svc -n testing
 --------
 levantar inventory-service para acceder a peticiones
 kubectl port-forward svc/inventory-service 8080:8000 -n testing
+
+
+Posibles proyectos
+----
+https://www.kaggle.com/datasets/trainingdatapro/medical-staff-people-tracking
+
+
+https://www.kaggle.com/datasets/moltean/fruits

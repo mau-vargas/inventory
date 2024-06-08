@@ -6,3 +6,6 @@ flask
 sqlalchemy
 colorama
 pydantic
+pyjwt
+"passlib[bcrypt]"
+PyJWT==2.3.0
